@@ -17,9 +17,9 @@ const LinkedInProfile = () => {
   const SectionCertify = useRef(null);
 
   return (
-    <div className="min-h-screen bg-gray-300 py-8 px-8 sm:px-6 lg:px-8">
+    <div className="min-h-screen  bg-slate-300 py-8 px-8 sm:px-6 lg:px-8">
       {/* Menu Lateral (Desktop) */}
-      <div className="fixed h-1/3 w-1/6 pt-8 hidden lg:block">
+      <div className="fixed h-1/3 w-1/6 pt-8 left-1 hidden lg:block">
         <header className="flex flex-col pl-15 space-y-4">
           <BtnMenu Section={sectionFormacao} Title="Formação" />
           <BtnMenu Section={sectionTrabalho} Title="Experiência" />
@@ -29,7 +29,7 @@ const LinkedInProfile = () => {
       </div>
 
       {/* Container Principal */}
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Cabeçalho com Foto */}
         <div
           className="h-[316px] w-full flex flex-col p-6 justify-center bg-cover bg-center"
@@ -180,7 +180,7 @@ const LinkedInProfile = () => {
       </div>
 
       {/* Seção de Contato (Desktop) */}
-      <div className="hidden lg:block fixed space-y-2 text-xl top-0 right-0 p-4 pr-20 z-20 text-center mt-8 text-gray-600">
+      <div className="hidden lg:block fixed space-y-2 text-lg top-0 right-0 p-4 pr-4 z-20 text-center mt-8 text-gray-600">
         <Titles title="Contato" />
         <p>filipe.bezerra@gmail.com</p>
         <p>+55 83 99653-8485</p>
@@ -195,7 +195,7 @@ const LinkedInProfile = () => {
         </p>
         <div className="flex justify-center items-center space-x-4 mt-4">
           <img
-            className="h-[200px] w-[200px]"
+            className="h-40 w-40"
             src={QRCode}
             alt="QR Code de Contato"
           />

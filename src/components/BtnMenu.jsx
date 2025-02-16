@@ -14,7 +14,7 @@ const BtnMenu = ({ Title, Section }) => {
     <button
       className="bg-slate-500 rounded-lg hover:bg-slate-200 text-white hover:text-black 
                  px-2 py-1 sm:py-2 text-sm sm:text-base transition-all duration-300
-                 w-20 sm:w-full" // Tamanho fixo para mobile e flexível para desktop
+                 w-full sm:w-[150px]" // Tamanho fixo para mobile e flexível para desktop
       onClick={() => scrollToSection(Section)}
     >
       {Title}
