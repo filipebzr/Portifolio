@@ -17,38 +17,45 @@ const LinkedInProfile = () => {
   const SectionCertify = useRef(null);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-8 sm:px-6 lg:px-8">
-      <div className="fixed h-1/3 w-1/6 pt-8 ">
-        <header className="flex flex-col pl-15 space-y-4 hidden lg:flex">
+    <div className="min-h-screen bg-gray-300 py-8 px-8 sm:px-6 lg:px-8">
+      {/* Menu Lateral (Desktop) */}
+      <div className="fixed h-1/3 w-1/6 pt-8 hidden lg:block">
+        <header className="flex flex-col pl-15 space-y-4">
           <BtnMenu Section={sectionFormacao} Title="Formação" />
           <BtnMenu Section={sectionTrabalho} Title="Experiência" />
           <BtnMenu Section={sectionSkills} Title="Skills" />
           <BtnMenu Section={SectionCertify} Title="Certificações" />
         </header>
       </div>
+
       {/* Container Principal */}
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        {/* Cabeçalho com Foto e Informações Básicas */}
-        <div className="h-[316px] w-full flex flex-col p-6 justify-center bg-cover bg-center bg-[url('../assets/bg-perfil.jpg')]">
-          <img src={bgTitle} alt="" />
-          <div className="flex items-center space-x-6 -my-20 px-2">
+        {/* Cabeçalho com Foto */}
+        <div
+          className="h-[316px] w-full flex flex-col p-6 justify-center bg-cover bg-center"
+          style={{ backgroundImage: `url(${bgTitle})` }}
+        >
+          <div className="flex items-center space-x-6 -my-20 px-2 flex-col lg:flex-row">
             <img
-              src={fotoPerfil} // Substitua pelo link da sua foto
+              src={fotoPerfil}
               alt="Filipe Bezerra"
               className="w-36 h-36 rounded-full border-4 border-white"
             />
             <div className="bg-white w-full p-4 bg-opacity-90 rounded-2xl my-8">
-              <h1 className="text-2xl  font-bold">Filipe Bezerra</h1>
-              <p className="text-lg">
+              <h1 className="text-2xl font-bold text-center lg:text-left">
+                Filipe Bezerra
+              </h1>
+              <p className="text-xl font-semibold text-center lg:text-left">
                 Desenvolvedor Frontend e Especialista em Geoprocessamento
               </p>
-              <p className="text-sm">João Pessoa, Paraíba, Brasil</p>
+              <p className="text-md text-center lg:text-left">
+                João Pessoa, Paraíba, Brasil
+              </p>
             </div>
           </div>
         </div>
 
         {/* Resumo */}
-
         <div className="p-6 border-b">
           <Titles title="Resumo" />
           <p className="text-gray-600 leading-relaxed">
@@ -59,14 +66,17 @@ const LinkedInProfile = () => {
             desenvolvimento de software para criar impactos tangíveis.
           </p>
         </div>
+
+        {/* Formação Acadêmica */}
         <section ref={sectionFormacao}></section>
         <div className="p-6 border-b">
           <Titles title="Formação Acadêmica" />
           <Formacao />
         </div>
+
         {/* Experiência Profissional */}
         <section ref={sectionTrabalho}></section>
-        <div className="p-8 border-b ">
+        <div className="p-8 border-b">
           <Titles title="Experiência Profissional" />
           <ExpProfissionais
             title="Compass UOL"
@@ -104,8 +114,16 @@ const LinkedInProfile = () => {
           <Titles title="Habilidades" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             <Habilidade habilidade="ArcGis Pro" color="eng" percentage={85} />
-            <Habilidade habilidade="ArcGis Online" color="eng" percentage={80} />
-            <Habilidade habilidade="Agisoft Metashape" color="eng" percentage={65} />
+            <Habilidade
+              habilidade="ArcGis Online"
+              color="eng"
+              percentage={80}
+            />
+            <Habilidade
+              habilidade="Agisoft Metashape"
+              color="eng"
+              percentage={65}
+            />
             <Habilidade habilidade="QGIS" color="eng" percentage={55} />
             <Habilidade habilidade="AutoCAD" color="eng" percentage={45} />
             <Habilidade habilidade="Scrum" color="tech" percentage={80} />
@@ -116,24 +134,28 @@ const LinkedInProfile = () => {
             <Habilidade habilidade="React.js" color="tech" percentage={25} />
             <Habilidade habilidade="AWS" color="tech" percentage={25} />
           </div>
-          <section ref={SectionCertify}></section>
-          <div className="p-6 border-b">
-            <Titles title="Certificações" />
-            
-            <Certification
-              title="Bootcamp Experiência do Usuário (UX)"
-              description="Atlântico Avanti | Mar 2024 – Ago 2024"
-              link="https://www.linkedin.com/posts/filipebzr_certificado-bootcamp-ux-activity-7215000848404254722-TULu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0wISwBD-nWAm0iciDC56gTJOsK0vHiQPc"
-            />
-            
-            <Titles title="Certificações AWS" />
-            <img
-              src={AWSCertify}
-              alt=""
-              className="h-[200px] w-[200px] shadow-xl"
-            />
-          </div>
-          <div className="fixed space-y-2 text-xl top-0 right-0 p-4 pr-20 z-20 grid text-center mt-8 text-gray-600 hidden lg:grid ">
+        </div>
+
+        {/* Certificações */}
+        <section ref={SectionCertify}></section>
+        <div className="p-6 border-b">
+          <Titles title="Certificações" />
+          <Certification
+            title="Bootcamp Experiência do Usuário (UX)"
+            description="Atlântico Avanti | Mar 2024 – Ago 2024"
+            link="https://www.linkedin.com/posts/filipebzr_certificado-bootcamp-ux-activity-7215000848404254722-TULu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0wISwBD-nWAm0iciDC56gTJOsK0vHiQPc"
+          />
+          <Titles title="Certificações AWS" />
+          <img
+            src={AWSCertify}
+            alt="Certificação AWS"
+            className="h-[200px] w-[200px] shadow-xl mx-auto"
+          />
+        </div>
+
+        {/* Seção de Contato (Mobile) */}
+        <div className="lg:hidden p-6 border-t">
+          <div className="space-y-2 text-center text-gray-600">
             <Titles title="Contato" />
             <p>filipe.bezerra@gmail.com</p>
             <p>+55 83 99653-8485</p>
@@ -146,10 +168,37 @@ const LinkedInProfile = () => {
                 linkedin.com/in/filipebzr
               </a>
             </p>
-            <div className="flex justify-center items-center space-x-4">
-              <img className="h-[200px] w-[200px]" src={QRCode} alt="" />
+            <div className="flex justify-center items-center mt-4">
+              <img
+                className="h-32 w-32"
+                src={QRCode}
+                alt="QR Code de Contato"
+              />
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Seção de Contato (Desktop) */}
+      <div className="hidden lg:block fixed space-y-2 text-xl top-0 right-0 p-4 pr-20 z-20 text-center mt-8 text-gray-600">
+        <Titles title="Contato" />
+        <p>filipe.bezerra@gmail.com</p>
+        <p>+55 83 99653-8485</p>
+        <p className="text-blue-600 hover:text-blue-800">
+          <a
+            href="https://linkedin.com/in/filipebzr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            linkedin.com/in/filipebzr
+          </a>
+        </p>
+        <div className="flex justify-center items-center space-x-4 mt-4">
+          <img
+            className="h-[200px] w-[200px]"
+            src={QRCode}
+            alt="QR Code de Contato"
+          />
         </div>
       </div>
     </div>
