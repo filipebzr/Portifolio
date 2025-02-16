@@ -5,63 +5,59 @@ const Habilidade = ({ habilidade, color, percentage }) => {
     tech: {
       bg: "bg-blue-500",
       text: "text-blue-800",
-      stroke: "#0258b8", // Cor correspondente ao azul
+      stroke: "#0258b8",
     },
     eng: {
       bg: "bg-green-300",
-      text: "text-green-900",
-      stroke: "#039c3a", // Cor correspondente ao verde
+      text: "text-green-900", 
+      stroke: "#039c3a",
     },
     default: {
       bg: "bg-gray-100",
       text: "text-gray-800",
-      stroke: "#e5e7eb", // Cinza claro
+      stroke: "b8b9ba",
     },
   };
 
   const selectedColor = colors[color] || colors.default;
 
   if (percentage !== undefined) {
-    const raio = 40;
+    const raio = 45;
     const circunferencia = 2 * Math.PI * raio;
     const offset = circunferencia - (percentage / 100) * circunferencia;
 
     return (
-      <div className="flex items-center justify-center">
-        <div className="relative w-20 h-10 mr-2 mb-2 items-center justify-center">
-          {/* Container para cortar a metade inferior */}
-          <div className="absolute w-20 h-10">
-            <svg
-              className="w-20 h-20 "
-              viewBox="0 0 100 100"
-              style={{ transform: "rotate(-90deg)" }}
-            >
-              {/* Fundo do gráfico */}
-              <circle
-                cx="50"
-                cy="50"
-                r={raio}
-                fill="none"
-                stroke="#e5e7eb"
-                strokeWidth="10"
-                opacity="0.3"
-              />
-              {/* Preenchimento baseado na porcentagem */}
-              <circle
-                cx="50"
-                cy="50"
-                r={raio}
-                fill="none"
-                stroke={selectedColor.stroke}
-                strokeWidth="10"
-                strokeDasharray={`${circunferencia} ${circunferencia}`}
-                strokeDashoffset={offset}
-              />
-            </svg>
-          </div>
-          {/* Texto da habilidade */}
+      <div className="flex items-center justify-center w-32 mb-4"> {/* Aumentar largura e margem */}
+        <div className="relative w-24 h-24"> {/* Container maior */}
+          <svg
+            className="w-24 h-24" // Tamanho igual para SVG
+            viewBox="0 0 100 100"
+            style={{ transform: "rotate(-90deg)" }}
+          >
+            <circle
+              cx="50"
+              cy="50"
+              r={raio}
+              fill="none"
+              stroke="#b8b9ba"
+              strokeWidth="10"
+              opacity="0.3"
+            />
+            <circle
+              cx="50"
+              cy="50"
+              r={raio}
+              fill="none"
+              stroke={selectedColor.stroke}
+              strokeWidth="10"
+              strokeDasharray={`${circunferencia} ${circunferencia}`}
+              strokeDashoffset={offset}
+            />
+          </svg>
           <span
-            className={`absolute text-base items-center justify-center -bottom-2 left-0 right-0 text-center ${selectedColor.text} text-sm font-bold`}
+            className={`absolute inset-0 flex items-center justify-center text-center ${
+              selectedColor.text
+            } text-base font-bold`} // Texto maior
           >
             {habilidade}
           </span>
@@ -70,10 +66,9 @@ const Habilidade = ({ habilidade, color, percentage }) => {
     );
   }
 
-  // Caso sem porcentagem (estilo original)
   return (
     <span
-      className={`${selectedColor.bg} ${selectedColor.text} px-3 py-1 rounded-full text-lg font-semibold mr-2 mb-2`}
+      className={`${selectedColor.bg} ${selectedColor.text} px-4 py-2 rounded-full text-lg font-semibold mr-2 mb-2`} // Texto maior
     >
       {habilidade}
     </span>

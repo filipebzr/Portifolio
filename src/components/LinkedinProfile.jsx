@@ -19,7 +19,7 @@ const LinkedInProfile = () => {
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-8 sm:px-6 lg:px-8">
       <div className="fixed h-1/3 w-1/6 pt-8 ">
-        <header className="flex flex-col pl-15 space-y-4">
+        <header className="flex flex-col pl-15 space-y-4 hidden lg:flex">
           <BtnMenu Section={sectionFormacao} Title="Formação" />
           <BtnMenu Section={sectionTrabalho} Title="Experiência" />
           <BtnMenu Section={sectionSkills} Title="Skills" />
@@ -99,12 +99,13 @@ const LinkedInProfile = () => {
         </div>
 
         {/* Habilidades */}
-        <div className="p-6">
+        <div className="p-6 border-b">
           <section ref={sectionSkills}></section>
           <Titles title="Habilidades" />
-          <div className="flex flex-wrap gap-2 items-center h-[150px] mb-8 ">
-            <Habilidade habilidade="ArcGis" color="eng" percentage={85} />
-            <Habilidade habilidade="Agisoft" color="eng" percentage={65} />
+          <div className="flex flex-wrap gap-2 items-center h-[300px] mb-8 ">
+            <Habilidade habilidade="ArcGis Pro" color="eng" percentage={85} />
+            <Habilidade habilidade="ArcGis Online" color="eng" percentage={80} />
+            <Habilidade habilidade="Agisoft Metashape" color="eng" percentage={65} />
             <Habilidade habilidade="QGIS" color="eng" percentage={55} />
             <Habilidade habilidade="AutoCAD" color="eng" percentage={45} />
             <Habilidade habilidade="Scrum" color="tech" percentage={80} />
@@ -116,19 +117,15 @@ const LinkedInProfile = () => {
             <Habilidade habilidade="AWS" color="tech" percentage={25} />
           </div>
           <section ref={SectionCertify}></section>
-          <div>
+          <div className="p-6 border-b">
             <Titles title="Certificações" />
-            <Certification description="teste" link="das" title="teste" />
-            <div className="m-6">
-              <h3 className="text-lg font-medium text-gray-900">
-                Bootcamp Experiência do Usuário (UX)
-              </h3>
-              <a href="https://www.linkedin.com/posts/filipebzr_certificado-bootcamp-ux-activity-7215000848404254722-TULu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0wISwBD-nWAm0iciDC56gTJOsK0vHiQPc">
-                <p className="text-gray-600">
-                  Atlântico Avanti | Mar 2024 – Ago 2024
-                </p>
-              </a>
-            </div>
+            
+            <Certification
+              title="Bootcamp Experiência do Usuário (UX)"
+              description="Atlântico Avanti | Mar 2024 – Ago 2024"
+              link="https://www.linkedin.com/posts/filipebzr_certificado-bootcamp-ux-activity-7215000848404254722-TULu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0wISwBD-nWAm0iciDC56gTJOsK0vHiQPc"
+            />
+            
             <Titles title="Certificações AWS" />
             <img
               src={AWSCertify}
@@ -136,8 +133,8 @@ const LinkedInProfile = () => {
               className="h-[200px] w-[200px] shadow-xl"
             />
           </div>
-          <div className="fixed space-y-2 text-xl top-0 right-0 p-4 pr-20 z-20 grid text-center mt-8 text-gray-600">
-            <Titles title="Contato"/>
+          <div className="fixed space-y-2 text-xl top-0 right-0 p-4 pr-20 z-20 grid text-center mt-8 text-gray-600 hidden lg:grid ">
+            <Titles title="Contato" />
             <p>filipe.bezerra@gmail.com</p>
             <p>+55 83 99653-8485</p>
             <p className="text-blue-600 hover:text-blue-800">
