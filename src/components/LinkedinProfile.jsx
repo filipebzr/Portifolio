@@ -1,27 +1,29 @@
 import fotoPerfil from "../assets/perfil.jpg";
 import bgTitle from "../assets/bg-perfil.jpg";
+import BtnMenu from "./BtnMenu";
 import QRCode from "../assets/QRCODEPROFILE.png";
 import { useRef } from "react";
 import Formacao from "./Formacao";
 import Habilidade from "./Habilidades";
-import BtnMenu from "./BtnMenu";
 import Titles from "./Titles";
 import ExpProfissionais from "./ExpProfissionais";
+import AWSCertify from "../assets/aws-certified-cloud-practitioner.png";
+import Certification from "./Certification";
 
 const LinkedInProfile = () => {
   const sectionTrabalho = useRef(null);
-  const sectionContact = useRef(null);
   const sectionFormacao = useRef(null);
   const sectionSkills = useRef(null);
+  const SectionCertify = useRef(null);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="fixed max-w-4xl h-1/3 w-1/6 p-4 ">
-        <header className="flex flex-col space-y-4">
+    <div className="min-h-screen bg-gray-100 py-8 px-8 sm:px-6 lg:px-8">
+      <div className="fixed h-1/3 w-1/6 pt-8 ">
+        <header className="flex flex-col pl-15 space-y-4">
           <BtnMenu Section={sectionFormacao} Title="Formação" />
-          <BtnMenu Section={sectionTrabalho} Title="Experiencia" />
+          <BtnMenu Section={sectionTrabalho} Title="Experiência" />
           <BtnMenu Section={sectionSkills} Title="Skills" />
-          <BtnMenu Section={sectionContact} Title="Contato" />
+          <BtnMenu Section={SectionCertify} Title="Certificações" />
         </header>
       </div>
       {/* Container Principal */}
@@ -100,42 +102,59 @@ const LinkedInProfile = () => {
         <div className="p-6">
           <section ref={sectionSkills}></section>
           <Titles title="Habilidades" />
-          <div className="flex flex-wrap gap-2 items-center h-[150px] mb-8">
-            <Habilidade habilidade="ArcGis" color="eng" percentage={80} />
-            <Habilidade habilidade="QGIS" color="eng" percentage={60} />
-            <Habilidade habilidade="React.js" color="tech" percentage={25} />
-            <Habilidade habilidade="TypeScript" color="tech" percentage={30} />
-            <Habilidade habilidade="JavaScript" color="tech" percentage={30} />
-            <Habilidade habilidade="Python" color="tech" percentage={60} />
-            <Habilidade habilidade="AWS" color="tech" percentage={25} />
+          <div className="flex flex-wrap gap-2 items-center h-[150px] mb-8 ">
+            <Habilidade habilidade="ArcGis" color="eng" percentage={85} />
+            <Habilidade habilidade="Agisoft" color="eng" percentage={65} />
+            <Habilidade habilidade="QGIS" color="eng" percentage={55} />
+            <Habilidade habilidade="AutoCAD" color="eng" percentage={45} />
             <Habilidade habilidade="Scrum" color="tech" percentage={80} />
             <Habilidade habilidade="Git" color="tech" percentage={60} />
+            <Habilidade habilidade="Python" color="tech" percentage={60} />
+            <Habilidade habilidade="TypeScript" color="tech" percentage={30} />
+            <Habilidade habilidade="JavaScript" color="tech" percentage={30} />
+            <Habilidade habilidade="React.js" color="tech" percentage={25} />
+            <Habilidade habilidade="AWS" color="tech" percentage={25} />
           </div>
-          <section></section>
+          <section ref={SectionCertify}></section>
           <div>
             <Titles title="Certificações" />
+            <Certification description="teste" link="das" title="teste" />
+            <div className="m-6">
+              <h3 className="text-lg font-medium text-gray-900">
+                Bootcamp Experiência do Usuário (UX)
+              </h3>
+              <a href="https://www.linkedin.com/posts/filipebzr_certificado-bootcamp-ux-activity-7215000848404254722-TULu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0wISwBD-nWAm0iciDC56gTJOsK0vHiQPc">
+                <p className="text-gray-600">
+                  Atlântico Avanti | Mar 2024 – Ago 2024
+                </p>
+              </a>
+            </div>
+            <Titles title="Certificações AWS" />
+            <img
+              src={AWSCertify}
+              alt=""
+              className="h-[200px] w-[200px] shadow-xl"
+            />
+          </div>
+          <div className="fixed space-y-2 text-xl top-0 right-0 p-4 pr-20 z-20 grid text-center mt-8 text-gray-600">
+            <Titles title="Contato"/>
+            <p>filipe.bezerra@gmail.com</p>
+            <p>+55 83 99653-8485</p>
+            <p className="text-blue-600 hover:text-blue-800">
+              <a
+                href="https://linkedin.com/in/filipebzr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/filipebzr
+              </a>
+            </p>
+            <div className="flex justify-center items-center space-x-4">
+              <img className="h-[200px] w-[200px]" src={QRCode} alt="" />
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Rodapé com Contato */}
-      <section ref={sectionContact}>
-        <div className="grid text-center mt-8 text-gray-600">
-          <p>📧 filipe.bezerra@gmail.com</p>
-          <p className="text-blue-600 hover:text-blue-800">
-            <a
-              href="https://linkedin.com/in/filipebzr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin.com/in/filipebzr
-            </a>
-          </p>
-          <div className="flex justify-center items-center space-x-4">
-            <img className="h-[200px] w-[200px]" src={QRCode} alt="" />
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

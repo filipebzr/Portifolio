@@ -3,14 +3,14 @@ import React from "react";
 const Habilidade = ({ habilidade, color, percentage }) => {
   const colors = {
     tech: {
-      bg: "bg-blue-100",
+      bg: "bg-blue-500",
       text: "text-blue-800",
-      stroke: "#93c5fd", // Cor correspondente ao azul
+      stroke: "#0258b8", // Cor correspondente ao azul
     },
     eng: {
-      bg: "bg-green-200",
-      text: "text-green-700",
-      stroke: "#86efac", // Cor correspondente ao verde
+      bg: "bg-green-300",
+      text: "text-green-900",
+      stroke: "#039c3a", // Cor correspondente ao verde
     },
     default: {
       bg: "bg-gray-100",
@@ -27,12 +27,12 @@ const Habilidade = ({ habilidade, color, percentage }) => {
     const offset = circunferencia - (percentage / 100) * circunferencia;
 
     return (
-      <div className="flex items-center justify-center"> 
+      <div className="flex items-center justify-center">
         <div className="relative w-20 h-10 mr-2 mb-2 items-center justify-center">
           {/* Container para cortar a metade inferior */}
           <div className="absolute w-20 h-10">
             <svg
-              className="w-20 h-20"
+              className="w-20 h-20 "
               viewBox="0 0 100 100"
               style={{ transform: "rotate(-90deg)" }}
             >
@@ -61,7 +61,7 @@ const Habilidade = ({ habilidade, color, percentage }) => {
           </div>
           {/* Texto da habilidade */}
           <span
-            className={`absolute text-base items-center justify-center -bottom-2 left-0 right-0 text-center ${selectedColor.text} text-sm font-semibold`}
+            className={`absolute text-base items-center justify-center -bottom-2 left-0 right-0 text-center ${selectedColor.text} text-sm font-bold`}
           >
             {habilidade}
           </span>

@@ -9,7 +9,7 @@ const BtnMenu = ({ Title, Section }) => {
   
     return (
       <button
-        className="bg-black rounded-xl hover:bg-slate-200 text-white hover:text-black w-1/2 py-2 transition-all duration-300"
+        className="bg-slate-500 rounded-xl hover:bg-slate-200 text-white hover:text-black w-full py-2 transition-all duration-300"
         onClick={() => scrollToSection(Section)}
       >
         {Title}
