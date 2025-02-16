@@ -102,7 +102,7 @@ const LinkedInProfile = () => {
         <div className="p-6 border-b">
           <section ref={sectionSkills}></section>
           <Titles title="Habilidades" />
-          <div className="flex flex-wrap gap-2 items-center h-[300px] mb-8 ">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             <Habilidade habilidade="ArcGis Pro" color="eng" percentage={85} />
             <Habilidade habilidade="ArcGis Online" color="eng" percentage={80} />
             <Habilidade habilidade="Agisoft Metashape" color="eng" percentage={65} />
