@@ -2,7 +2,7 @@ import fotoPerfil from "../assets/perfil.jpg";
 import bgTitle from "../assets/bg-perfil.jpg";
 import BtnMenu from "./BtnMenu";
 import QRCode from "../assets/QRCODEPROFILE.png";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Formacao from "./Formacao";
 import Habilidade from "./Habilidades";
 import Titles from "./Titles";
@@ -15,11 +15,21 @@ const LinkedInProfile = () => {
   const sectionFormacao = useRef(null);
   const sectionSkills = useRef(null);
   const SectionCertify = useRef(null);
-
+  const [darkMode, setDarkMode] = useState(false);
   return (
-    <div className="min-h-screen  bg-slate-300 py-8 px-8 sm:px-6 lg:px-8">
+    <div
+      className={`min-h-screen ${
+        darkMode ? "bg-gray-900 text-white" : "bg-slate-300"
+      } py-8 px-8 sm:px-6 lg:px-8 transition-colors duration-300`}
+    >
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="fixed top-4 right-4 z-50 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all"
+      >
+        {darkMode ? "🌞" : "🌙"}
+      </button>
       {/* Menu Lateral (Desktop) */}
-      <div className="fixed h-1/3 w-1/6 pt-8 left-1 hidden lg:block">
+      <div className="fixed h-1/3 w-1/6 pt-8 left-8 hidden lg:block">
         <header className="flex flex-col pl-15 space-y-4">
           <BtnMenu Section={sectionFormacao} Title="Formação" />
           <BtnMenu Section={sectionTrabalho} Title="Experiência" />
@@ -29,19 +39,19 @@ const LinkedInProfile = () => {
       </div>
 
       {/* Container Principal */}
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-3xl mx-auto  bg-white/80 backdrop-blur-lg p-4 rounded-lg shadow-lg overflow-hidden">
         {/* Cabeçalho com Foto */}
         <div
-          className="h-[316px] w-full flex flex-col p-6 justify-center bg-cover bg-center"
+          className="dark:text-slate-700 h-[500px] lg:h-[316px] w-full flex flex-col p-6 justify-center bg-cover bg-center"
           style={{ backgroundImage: `url(${bgTitle})` }}
         >
-          <div className="flex items-center space-x-6 -my-20 px-2 flex-col lg:flex-row">
+          <div className="flex items-center space-x-6 -my-20 px-2 flex-col  lg:flex-row">
             <img
               src={fotoPerfil}
               alt="Filipe Bezerra"
-              className="w-36 h-36 rounded-full border-4 border-white"
+              className="w-36 h-36 rounded-full border-4 object-cover border-white"
             />
-            <div className="bg-white w-full p-4 bg-opacity-90 rounded-2xl my-8">
+            <div className="bg-white  w-full flex-col p-4 bg-opacity-90 rounded-2xl my-8">
               <h1 className="text-2xl font-bold text-center lg:text-left">
                 Filipe Bezerra
               </h1>
@@ -76,7 +86,7 @@ const LinkedInProfile = () => {
 
         {/* Experiência Profissional */}
         <section ref={sectionTrabalho}></section>
-        <div className="p-8 border-b">
+        <div className="group relative p-6 border rounded-xl hover:bg-gray-50 transition-all">
           <Titles title="Experiência Profissional" />
           <ExpProfissionais
             title="Compass UOL"
@@ -112,27 +122,42 @@ const LinkedInProfile = () => {
         <div className="p-6 border-b">
           <section ref={sectionSkills}></section>
           <Titles title="Habilidades" />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-            <Habilidade habilidade="ArcGis Pro" color="eng" percentage={85} />
-            <Habilidade
-              habilidade="ArcGis Online"
-              color="eng"
-              percentage={80}
-            />
-            <Habilidade
-              habilidade="Agisoft Metashape"
-              color="eng"
-              percentage={65}
-            />
-            <Habilidade habilidade="QGIS" color="eng" percentage={55} />
-            <Habilidade habilidade="AutoCAD" color="eng" percentage={45} />
-            <Habilidade habilidade="Scrum" color="tech" percentage={80} />
-            <Habilidade habilidade="Git" color="tech" percentage={60} />
-            <Habilidade habilidade="Python" color="tech" percentage={60} />
-            <Habilidade habilidade="TypeScript" color="tech" percentage={30} />
-            <Habilidade habilidade="JavaScript" color="tech" percentage={30} />
-            <Habilidade habilidade="React.js" color="tech" percentage={25} />
-            <Habilidade habilidade="AWS" color="tech" percentage={25} />
+          <div className="grid grid-cols-2 gap-6 mb-8">
+            {/* Primeira Coluna */}
+            <div className="space-y-6">
+              <Habilidade habilidade="ArcGis Pro" color="eng" percentage={85} />
+              <Habilidade
+                habilidade="ArcGis Online"
+                color="eng"
+                percentage={80}
+              />
+              <Habilidade
+                habilidade="Agisoft Metashape"
+                color="eng"
+                percentage={65}
+              />
+              <Habilidade habilidade="QGIS" color="eng" percentage={55} />
+              <Habilidade habilidade="AutoCAD" color="eng" percentage={45} />
+              <Habilidade habilidade="Scrum" color="tech" percentage={80} />
+            </div>
+
+            {/* Segunda Coluna */}
+            <div className="space-y-6">
+              <Habilidade habilidade="Git" color="tech" percentage={60} />
+              <Habilidade habilidade="Python" color="tech" percentage={60} />
+              <Habilidade
+                habilidade="TypeScript"
+                color="tech"
+                percentage={30}
+              />
+              <Habilidade
+                habilidade="JavaScript"
+                color="tech"
+                percentage={30}
+              />
+              <Habilidade habilidade="React.js" color="tech" percentage={25} />
+              <Habilidade habilidade="AWS" color="tech" percentage={25} />
+            </div>
           </div>
         </div>
 
@@ -180,7 +205,7 @@ const LinkedInProfile = () => {
       </div>
 
       {/* Seção de Contato (Desktop) */}
-      <div className="hidden lg:block fixed space-y-2 text-lg top-0 right-0 p-4 pr-4 z-20 text-center mt-8 text-gray-600">
+      <div className="hidden dark:bg-white/60 lg:block fixed space-y-2 text-lg top-0 right-6 rounded-lg p-4 pr-4 z-20 text-center mt-8 text-gray-600">
         <Titles title="Contato" />
         <p>filipe.bezerra@gmail.com</p>
         <p>+55 83 99653-8485</p>
@@ -194,11 +219,7 @@ const LinkedInProfile = () => {
           </a>
         </p>
         <div className="flex justify-center items-center space-x-4 mt-4">
-          <img
-            className="h-40 w-40"
-            src={QRCode}
-            alt="QR Code de Contato"
-          />
+          <img className="h-40 w-40" src={QRCode} alt="QR Code de Contato" />
         </div>
       </div>
     </div>

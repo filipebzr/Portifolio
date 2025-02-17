@@ -3,8 +3,8 @@
 const Formacao = () => {
   return (
     <div className="p-6 border-b">
-      <div className=" flex">
-        <div className="mb-4 p-2 w-1/2">
+      <div className="flex-col lg:flex-row">
+        <div className="mb-4 p-2 w-full lg:w-1/2 ">
           <h3 className="text-lg font-medium text-gray-900">
             UNIESP Centro Universitário
           </h3>
