@@ -2,12 +2,12 @@ import fotoPerfil from "../assets/perfil.jpg";
 import bgTitle from "../assets/bg-perfil.jpg";
 import BtnMenu from "./BtnMenu";
 import QRCode from "../assets/QRCODEPROFILE.png";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Formacao from "./Formacao";
 import Habilidade from "./Habilidades";
 import Titles from "./Titles";
 import ExpProfissionais from "./ExpProfissionais";
-import AWSCertify from "../assets/aws-certified-cloud-practitioner.png";
+import AWSCertifyPractitioner from "../assets/aws-certified-cloud-practitioner.png";
 import Certification from "./Certification";
 
 const LinkedInProfile = () => {
@@ -15,19 +15,11 @@ const LinkedInProfile = () => {
   const sectionFormacao = useRef(null);
   const sectionSkills = useRef(null);
   const SectionCertify = useRef(null);
-  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <div
-      className={`min-h-screen ${
-        darkMode ? "bg-gray-900 text-white" : "bg-slate-300"
-      } py-8 px-8 sm:px-6 lg:px-8 transition-colors duration-300`}
+      className={`min-h-screen ${"bg-slate-300"} py-8 px-8 sm:px-6 lg:px-8 transition-colors duration-300`}
     >
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed top-4 right-4 z-50 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all"
-      >
-        {darkMode ? "🌞" : "🌙"}
-      </button>
       {/* Menu Lateral (Desktop) */}
       <div className="fixed h-1/3 w-1/6 pt-8 left-8 hidden lg:block">
         <header className="flex flex-col pl-15 space-y-4">
@@ -39,13 +31,13 @@ const LinkedInProfile = () => {
       </div>
 
       {/* Container Principal */}
-      <div className="max-w-3xl mx-auto  bg-white/80 backdrop-blur-lg p-4 rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-3xl mx-auto bg-white/80 backdrop-blur-lg p-4 rounded-lg shadow-lg overflow-hidden">
         {/* Cabeçalho com Foto */}
         <div
           className="dark:text-slate-700 h-[500px] lg:h-[316px] w-full flex flex-col p-6 justify-center bg-cover bg-center"
           style={{ backgroundImage: `url(${bgTitle})` }}
         >
-          <div className="flex items-center space-x-6 -my-20 px-2 flex-col  lg:flex-row">
+          <div className="flex items-center space-x-6 -my-20 px-2 flex-col  dark:text-black lg:flex-row">
             <img
               src={fotoPerfil}
               alt="Filipe Bezerra"
@@ -86,7 +78,7 @@ const LinkedInProfile = () => {
 
         {/* Experiência Profissional */}
         <section ref={sectionTrabalho}></section>
-        <div className="group relative p-6 border rounded-xl hover:bg-gray-50 transition-all">
+        <div className="group relative p-6 rounded-xl">
           <Titles title="Experiência Profissional" />
           <ExpProfissionais
             title="Compass UOL"
@@ -97,6 +89,15 @@ const LinkedInProfile = () => {
             <li>Participação em sprints ágeis (Scrum)</li>
             <li>Projetos com HTML/CSS/JavaScript</li>
             <li>Computação em Nuvem com AWS</li>
+          </ul>{" "}
+          <ExpProfissionais
+            title="Outlier"
+            cargo="AI Traner - Freelance | Jan 2025 - Presente"
+          />
+          <ul className="list-disc pl-6 text-gray-600 mt-2 space-y-2">
+            <li>Criação e Refinamento de Prompts</li>
+            <li>Avaliação de Desempenho dos LLMs</li>
+            <li>Curadoria de Dados Especializados</li>
           </ul>
           <ExpProfissionais
             title="Prefeitura de João Pessoa"
@@ -122,7 +123,7 @@ const LinkedInProfile = () => {
         <div className="p-6 border-b">
           <section ref={sectionSkills}></section>
           <Titles title="Habilidades" />
-          <div className="grid grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-2 gap-6 mb-8 transition-all">
             {/* Primeira Coluna */}
             <div className="space-y-6">
               <Habilidade habilidade="ArcGis Pro" color="eng" percentage={85} />
@@ -163,7 +164,7 @@ const LinkedInProfile = () => {
 
         {/* Certificações */}
         <section ref={SectionCertify}></section>
-        <div className="p-6 border-b">
+        <div className="p-6 border-b ">
           <Titles title="Certificações" />
           <Certification
             title="Bootcamp Experiência do Usuário (UX)"
@@ -171,11 +172,13 @@ const LinkedInProfile = () => {
             link="https://www.linkedin.com/posts/filipebzr_certificado-bootcamp-ux-activity-7215000848404254722-TULu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0wISwBD-nWAm0iciDC56gTJOsK0vHiQPc"
           />
           <Titles title="Certificações AWS" />
-          <img
-            src={AWSCertify}
-            alt="Certificação AWS"
-            className="h-[200px] w-[200px] shadow-xl mx-auto"
-          />
+          <div className="flex">
+            <img
+              src={AWSCertifyPractitioner}
+              alt="Certificação AWS"
+              className="h-[200px] w-[200px] items-start shadow-xl mx-auto"
+            />
+          </div>
         </div>
 
         {/* Seção de Contato (Mobile) */}
