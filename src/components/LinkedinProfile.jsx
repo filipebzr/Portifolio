@@ -9,12 +9,14 @@ import Titles from "./Titles";
 import ExpProfissionais from "./ExpProfissionais";
 import AWSCertifyPractitioner from "../assets/aws-certified-cloud-practitioner.png";
 import Certification from "./Certification";
+import BtnProjects from "./BtnProjects";
 
 const LinkedInProfile = () => {
   const sectionTrabalho = useRef(null);
   const sectionFormacao = useRef(null);
   const sectionSkills = useRef(null);
   const SectionCertify = useRef(null);
+  const SectionProjects = useRef(null);
 
   return (
     <div
@@ -25,6 +27,7 @@ const LinkedInProfile = () => {
         <header className="flex flex-col pl-15 space-y-4">
           <BtnMenu Section={sectionFormacao} Title="Formação" />
           <BtnMenu Section={sectionTrabalho} Title="Experiência" />
+          <BtnMenu Section={SectionProjects} Title="Projetos" />
           <BtnMenu Section={sectionSkills} Title="Skills" />
           <BtnMenu Section={SectionCertify} Title="Certificações" />
         </header>
@@ -41,18 +44,30 @@ const LinkedInProfile = () => {
             <img
               src={fotoPerfil}
               alt="Filipe Bezerra"
-              className="w-36 h-36 rounded-full border-4 object-cover border-white"
+              className="w-40 h-40 rounded-full border-4 object-cover border-white"
             />
-            <div className="bg-white  w-full flex-col p-4 bg-opacity-90 rounded-2xl my-8">
+            <div className="bg-white space-y-2 w-full flex-col p-4 bg-opacity-90 rounded-2xl my-8">
               <h1 className="text-2xl font-bold text-center lg:text-left">
                 Filipe Bezerra
               </h1>
               <p className="text-xl font-semibold text-center lg:text-left">
-                Desenvolvedor Frontend e Especialista em Geoprocessamento
+                Engenheiro Ambiental & Desenvolvedor Frontend  Geoprocessamento
+                & React.js
               </p>
-              <p className="text-md text-center lg:text-left">
+              <p className="text-sm text-center lg:text-left">
                 João Pessoa, Paraíba, Brasil
               </p>
+              <p className="text-sm font-semibold text-center lg:text-left">
+                Meus Projetos:
+              </p>
+              <div className="gap-4 flex flex-col lg:flex-row">
+                <BtnProjects
+                  cor="green"
+                  link="geo"
+                  projeto="Geoprocessamento"
+                />
+                <BtnProjects cor="blue" link="tech" projeto="Frontend" />
+              </div>
             </div>
           </div>
         </div>
@@ -117,6 +132,14 @@ const LinkedInProfile = () => {
             <li>Suporte de Rede e Servidor</li>
             <li>Backup e Banco de Dados</li>
           </ul>
+        </div>
+        <section ref={SectionProjects}></section>
+        <div className="p-6 border-b">
+          <Titles title="Projetos" />
+          <div className="gap-4 flex flex-col lg:flex-row">
+            <BtnProjects cor="green" link="geo" projeto="Geoprocessamento" />
+            <BtnProjects cor="blue" link="tech" projeto="Frontend" />
+          </div>
         </div>
 
         {/* Habilidades */}
